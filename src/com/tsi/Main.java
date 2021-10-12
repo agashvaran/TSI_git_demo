@@ -7,7 +7,18 @@ public class Main
 
     public static void main(String[] args)
     {
-        System.out.println("***Decoration Cost Calculator***");
+        String message = "Enter 1 for: Paint Cost Calculator";
+        Scanner input = new Scanner(System.in);
+        System.out.println(message);
+        int answer = input.nextInt();
+
+        switch(answer){
+            case 1:
+                System.out.println("You've come to the right place");
+                break;
+            case 2:
+                System.out.println("Please try again later. Use the pain cost calculator for now.");
+        }
 
         double area = roomArea();
         System.out.println("Total area: " + area);
@@ -18,37 +29,27 @@ public class Main
         double cost = costOfPaintRequired(totalPaintLitres);
         System.out.printf("Total Cost: £%.2f %n", cost);
 
-//        int choice = 2;
-//        String message;
-//        //ternary operator
-//        message = (choice == 1) ? "Happy days" : "sad days";
-//
-//        System.out.println(message);
-
-
-
     }
 
     public static double roomArea()
     {
 
-        Scanner areaInput = new Scanner(System.in);
-        System.out.println("Do you already know the area of the wall?: ");
-        String answer = areaInput.nextLine();
+        Scanner input = new Scanner(System.in);
+
         double areaOfRoom;
+        System.out.println("Do you already know the area of the wall?: ");
+        String answer = input.nextLine();
 
         if (answer.equals("yes"))
         {
 
             System.out.println("Enter the area of the wall: ");
-            areaOfRoom = areaInput.nextDouble();
+            areaOfRoom = input.nextDouble();
 
         }
 
         else
         {
-            Scanner input = new Scanner(System.in); //create a scanner object
-
             System.out.println("Enter room Width: ");
             double rWidth = input.nextInt();
 
@@ -70,8 +71,8 @@ public class Main
         System.out.println("Area covered by 1 litre of paint in metre^2: ");
         double areaCoveredByOneLitreOfPaint = paintCoverage.nextDouble();
 
-        double litre = totalArea / areaCoveredByOneLitreOfPaint;
-        return litre;
+        double litreOfPaintToCoverTotalArea = totalArea / areaCoveredByOneLitreOfPaint;
+        return litreOfPaintToCoverTotalArea;
 
     }
 
@@ -80,12 +81,12 @@ public class Main
         Scanner input = new Scanner(System.in);
 
         System.out.println("Size of the paint tin available to buy in litres: ");
-        double paintSize = input.nextDouble();
+        double paintSizeInLitres = input.nextDouble();
 
-        System.out.println("Cost of a " + paintSize + " L paint tin: ");
+        System.out.println("Cost of a " + paintSizeInLitres + " L paint tin: ");
         double paintCost = input.nextDouble();
 
-        double totalCost = paintCost * (litreOfPaintRequired / paintSize);
+        double totalCost = paintCost * (litreOfPaintRequired / paintSizeInLitres);
         return totalCost;
     }
 
