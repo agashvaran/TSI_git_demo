@@ -18,20 +18,47 @@ public class Main
         double cost = costOfPaintRequired(totalPaintLitres);
         System.out.printf("Total Cost: £%.2f %n", cost);
 
+//        int choice = 2;
+//        String message;
+//        //ternary operator
+//        message = (choice == 1) ? "Happy days" : "sad days";
+//
+//        System.out.println(message);
+
+
+
     }
 
     public static double roomArea()
     {
 
-        Scanner input = new Scanner(System.in); //create a scanner object
+        Scanner areaInput = new Scanner(System.in);
+        System.out.println("Do you already know the area of the wall?: ");
+        String answer = areaInput.nextLine();
+        double areaOfRoom;
 
-        System.out.println("Enter room Width: ");
-        double rWidth = input.nextInt();
+        if (answer.equals("yes"))
+        {
 
-        System.out.println("Enter room length:");
-        double rLength = input.nextInt();
+            System.out.println("Enter the area of the wall: ");
+            areaOfRoom = areaInput.nextDouble();
 
-        double areaOfRoom = rWidth * rLength;
+        }
+
+        else
+        {
+            Scanner input = new Scanner(System.in); //create a scanner object
+
+            System.out.println("Enter room Width: ");
+            double rWidth = input.nextInt();
+
+            System.out.println("Enter room length:");
+            double rLength = input.nextInt();
+
+            areaOfRoom = rWidth * rLength;
+
+        }
+
         return Math.ceil(areaOfRoom);
 
     }
