@@ -7,7 +7,7 @@ public class Main
 
     public static void main(String[] args)
     {
-        String message = "Enter 1 for: Paint Cost Calculator";
+        String message = "Enter '1' for: Paint Cost Calculator";
         Scanner input = new Scanner(System.in);
         System.out.println(message);
         int answer = input.nextInt();
@@ -17,17 +17,31 @@ public class Main
                 System.out.println("You've come to the right place");
                 break;
             case 2:
-                System.out.println("Please try again later. Use the pain cost calculator for now.");
+                System.out.println("Please try again later. Now, use the pain cost calculator for now.");
         }
 
-        double area = roomArea();
-        System.out.println("Total area: " + area);
+        String repeat = "";
+        do
+        {
+            double area = roomArea();
+            System.out.println("Total area: " + area);
 
-        double totalPaintLitres = Math.ceil(litreOfPaintRequired(area));
-        System.out.println("Litres of paint required for " + area + " metre^2: " + totalPaintLitres);
+            double paintRequiredOverall = litreOfPaintRequired(area);
+            double totalPaintLitres = Math.ceil(paintRequiredOverall);
+            System.out.println("Litres of paint required for " + area + " metre^2: " + totalPaintLitres);
 
-        double cost = costOfPaintRequired(totalPaintLitres);
-        System.out.printf("Total Cost: £%.2f %n", cost);
+            double cost = costOfPaintRequired(totalPaintLitres);
+            System.out.printf("Total Cost: £%.2f %n", cost);
+
+            Scanner repeatInput = new Scanner(System.in);
+            System.out.println("Add wall?: ");
+            repeat = repeatInput.nextLine();
+
+        }
+        while
+        (
+                repeat.equals("yes")
+        );
 
     }
 
