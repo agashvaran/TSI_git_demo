@@ -7,7 +7,7 @@ public class Main
 
     public static void main(String[] args)
     {
-        String message = "Enter '1' for: Paint Cost Calculator";
+        String message = "Enter '1' for Paint Cost Calculator. '2' for Painter Hire: ";
         Scanner input = new Scanner(System.in);
         System.out.println(message);
         int answer = input.nextInt();
@@ -23,6 +23,7 @@ public class Main
         String repeat = "";
         do
         {
+
             double area = roomArea();
             System.out.println("Total area: " + area);
 
@@ -30,8 +31,20 @@ public class Main
             double totalPaintLitres = Math.ceil(paintRequiredOverall);
             System.out.println("Litres of paint required for " + area + " metre^2: " + totalPaintLitres);
 
-            double cost = costOfPaintRequired(totalPaintLitres);
-            System.out.printf("Total Cost: £%.2f %n", cost);
+            double costOfOneWall = costOfPaintRequired(totalPaintLitres);
+            System.out.printf("Total Cost: £%.2f %n", costOfOneWall);
+
+            //arrays
+            double[] costForAllWalls = new double[5];
+
+            costForAllWalls[0] = costOfOneWall;
+
+
+            for(double y : costForAllWalls){
+                System.out.println(y);
+            }
+
+            //arrays end
 
             Scanner repeatInput = new Scanner(System.in);
             System.out.println("Add wall?: ");
