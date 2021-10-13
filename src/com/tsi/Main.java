@@ -1,5 +1,7 @@
 package com.tsi;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main
@@ -20,41 +22,56 @@ public class Main
                 System.out.println("Please try again later. Now, use the pain cost calculator for now.");
         }
 
-        String repeat = "";
-        do
+        //paint cost calc
+        int counter = 0;
+        for(int i = 0; i<5; i++)
         {
 
-            double area = roomArea();
-            System.out.println("Total area: " + area);
+            Scanner continueP = new Scanner(System.in);
+            System.out.println("Add wall?: ");
+            String start = continueP.nextLine();
 
-            double paintRequiredOverall = litreOfPaintRequired(area);
-            double totalPaintLitres = Math.ceil(paintRequiredOverall);
-            System.out.println("Litres of paint required for " + area + " metre^2: " + totalPaintLitres);
+            if (start.equals("yes"))
+            {
 
-            double costOfOneWall = costOfPaintRequired(totalPaintLitres);
-            System.out.printf("Total Cost: £%.2f %n", costOfOneWall);
+                double area = roomArea();
+                System.out.println("Total area: " + area);
 
-            //arrays
-            double[] costForAllWalls = new double[5];
+                double paintRequiredOverall = litreOfPaintRequired(area);
+                double totalPaintLitres = Math.ceil(paintRequiredOverall);
+                System.out.println("Litres of paint required for " + area + " metre^2: " + totalPaintLitres);
 
-            costForAllWalls[0] = costOfOneWall;
+                double costOfOneWall = costOfPaintRequired(totalPaintLitres);
+                System.out.printf("Cost for this wall: £%.2f %n", costOfOneWall);
+
+                //arrays
+                List<Double> costForAllWalls = new ArrayList<>();
+                costForAllWalls.add(costOfOneWall);
 
 
-            for(double y : costForAllWalls){
-                System.out.println(y);
+
+                for(int j = 0; j < costForAllWalls.size(); j++){
+                    counter += costForAllWalls.get(j);
+
+                }
+                System.out.printf("Total Cost: £%.2f %n", counter);
+
+            }
+            else{
+                break;
             }
 
-            //arrays end
-
-            Scanner repeatInput = new Scanner(System.in);
-            System.out.println("Add wall?: ");
-            repeat = repeatInput.nextLine();
 
         }
-        while
-        (
-                repeat.equals("yes")
-        );
+
+
+
+        //arrays end
+
+//        Scanner repeatInput = new Scanner(System.in);
+//        System.out.println("Add wall?: ");
+//        repeat = repeatInput.nextLine();
+
 
     }
 
